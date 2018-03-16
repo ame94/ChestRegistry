@@ -1,0 +1,11 @@
+name: ChestRegistry
+version: 0.1
+description: Player Chest Registry
+author: ame94
+main: ca.ame94.chestregistry.PluginMain
+
+commands:
+    chestreg:
+        description: Base command
+        permission: chestregistry.admin
+        permission-message: §4You are not permitted to use this plugin.
