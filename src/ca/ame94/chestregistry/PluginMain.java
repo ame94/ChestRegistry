@@ -1,5 +1,9 @@
 package ca.ame94.chestregistry;
 
+import ca.ame94.chestregistry.listener.BlockBreakListener;
+import ca.ame94.chestregistry.listener.BlockPlaceListener;
+import ca.ame94.chestregistry.util.ChestManager;
+import ca.ame94.chestregistry.util.Config;
 import ca.ame94.chestregistry.util.Logger;
 import ca.ame94.chestregistry.util.PluginMgr;
 import org.bukkit.command.Command;
@@ -10,13 +14,20 @@ public class PluginMain extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        PluginMgr.Init(this);
         Logger.Info("Starting up!");
+        PluginMgr.Init(this);
+        Config.Init();
+        ChestManager.Init();
+
+        // Register events
+        PluginMgr.RegisterEvent(new BlockPlaceListener());
+        PluginMgr.RegisterEvent(new BlockBreakListener());
     }
 
     @Override
     public void onDisable() {
         Logger.Info("Shutting down.");
+
     }
 
     @Override
